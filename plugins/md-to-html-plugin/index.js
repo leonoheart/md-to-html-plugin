@@ -19,18 +19,17 @@ class MdToHtmlPlugin {
       const _mdContent = readFileSync(this.template, 'utf8');
       const _templateHTML = resolve(__dirname, 'template.html', 'utf8');
       const _mdContentArr = _mdContent.split('\n');
-      // todo
-      //const _htmlStr = compileHTML(_mdContentArr);
-      const _finalHTML = _templateHTML.replace(INNER_MARK, _htmlStr);
+      const _htmlStr = compileHTML(_mdContentArr);
+      // const _finalHTML = _templateHTML.replace(INNER_MARK, _htmlStr);
 
-      _assets[this.filename] = {
-        source () {
-          return _finalHTML;
-        },
-        size () {
-          return _finalHTML.length;
-        }
-      }
+      // _assets[this.filename] = {
+      //   source () {
+      //     return _finalHTML;
+      //   },
+      //   size () {
+      //     return _finalHTML.length;
+      //   }
+      // }
     })
   }
 }
