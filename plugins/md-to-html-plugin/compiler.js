@@ -1,5 +1,6 @@
 const reg_mark = /^(.+?)\s/;
 const reg_sharp = /^\#/;
+const reg_crossbar = /^\-/;
 
 function createTree (mdArr) {
   let _htmlPool = {};
@@ -22,6 +23,21 @@ function createTree (mdArr) {
           _htmlPool[tag] = {
             type: 'single',
             tags: [`<${tag}>${tagContent}</${tag}`]
+          }
+        }
+      }
+
+      if (reg_crossbar.test(mark)) {
+        const tagContent = input.replace(reg_mark, '');
+        const tag = 'li';
+
+        if (reg_crossbar.test(_lastMark)) {
+          _htmlPool['ul'].tags = [..._htmlPool['ul'].tags, ]
+        } else {
+          _lastMark = mark;
+          _htmlPool['ul'] = {
+            type: 'wrap',
+            tags: [`<${tag}>${tagContent}</${tag}`],
           }
         }
       }
