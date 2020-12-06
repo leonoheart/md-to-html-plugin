@@ -1,3 +1,4 @@
+const { randomNum } = require('./utils');
 const reg_mark = /^(.+?)\s/;
 const reg_sharp = /^\#/;
 const reg_crossbar = /^\-/;
@@ -32,7 +33,7 @@ function createTree (mdArr) {
         const tag = 'li';
 
         if (reg_crossbar.test(_lastMark)) {
-          _htmlPool['ul'].tags = [..._htmlPool['ul'].tags, ]
+          _htmlPool['ul'].tags = [..._htmlPool['ul'].tags, `<${tag}>${tagContent}</${tag}`];
         } else {
           _lastMark = mark;
           _htmlPool['ul'] = {
